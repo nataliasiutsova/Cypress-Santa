@@ -2,7 +2,7 @@
 
 describe('Santa-secret UI testing', () => {
   beforeEach(() => {
-    cy.visit('https://santa-secret.ru/');
+    cy.visit('/');
   });
 
   it('Check "Вход и регистрация" link', () => {
@@ -15,6 +15,6 @@ describe('Santa-secret UI testing', () => {
         cy.wrap($a).click({ force: true });
       }
     });
-    cy.url().should('eq', 'https://santa-secret.ru/login');
+    cy.url().should('eq', 'https://staging.lpitko.ru/login');
   });
 });
