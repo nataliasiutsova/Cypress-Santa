@@ -4,8 +4,8 @@
   "description": "UI testing",
   "main": "index.js",
   "scripts": {
-    "open": "npx cypress open",
-    "test": "npx cypress run"
+    "cy:open": "cypress open",
+    "cy:run": "cypress run"
   },
   "author": "Natalia Siutsova <tashaklimenkova@gmail.com>",
   "license": "ISC",
