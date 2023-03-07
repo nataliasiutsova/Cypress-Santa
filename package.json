@@ -4,9 +4,10 @@
   "description": "UI testing",
   "main": "index.js",
   "scripts": {
-    "cy:open": "cypress open",
-    "cy:run": "cypress run",
-    "cy:dashboard": "cypress run --record --key 3b4f35ff-ad5e-4d4b-acbe-1bfda2f8baf8"
+    "cy:open:stage": "cypress open --config-file cypress.config-stage.js",
+    "cy:open:prod": "npx cypress open --env userName=Santa,password=asdfgh,email=test-email2023@mail.ru --config baseUrl=https://santa-secret.ru/",
+    "cy:dashboard": "cypress run --record --key 3b4f35ff-ad5e-4d4b-acbe-1bfda2f8baf8",
+    "cy:dashboard:prod": "npx cypress run --env userName=Santa,password=asdfgh,email=test-email2023@mail.ru --config baseUrl=https://santa-secret.ru/ --record --key 3b4f35ff-ad5e-4d4b-acbe-1bfda2f8baf8"
   },
   "author": "Natalia Siutsova <tashaklimenkova@gmail.com>",
   "license": "ISC",

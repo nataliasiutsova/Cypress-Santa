@@ -19,7 +19,7 @@ describe('Check the main links of santa-secrer app', () => {
       .and('contain.text', 'Мои Коробки');
   });
 
-  it.skip('Check "Создать коробку" link', () => {
+  it('Check "Создать коробку" link', () => {
     cy.get('.home-page-buttons > [href="/box/new"] > .btn-main').click();
     cy.url().should('include', '/box/new');
     cy.get('.form-card')
@@ -27,7 +27,7 @@ describe('Check the main links of santa-secrer app', () => {
       .and('contain.text', 'Придумайте название коробке');
   });
 
-  it.skip('Check "Быстрая жеребьевка" link', () => {
+  it('Check "Быстрая жеребьевка" link', () => {
     cy.get('[href="/randomizer"] > .btn-secondary').click();
     cy.url().should('include', '/randomizer');
     cy.get('.form-card')
