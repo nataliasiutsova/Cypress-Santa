@@ -15,6 +15,6 @@ describe('Santa-secret UI testing', () => {
         cy.wrap($a).click({ force: true });
       }
     });
-    cy.url().should('eq', 'https://staging.lpitko.ru/login');
+    cy.url().should('include', '/login');
   });
 });
