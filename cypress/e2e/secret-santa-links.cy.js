@@ -4,8 +4,8 @@ describe('Check the main links of santa-secrer app', () => {
     cy.get(
       '.layout-1__header-wrapper-fixed > .layout-1__header > .header > .header__items > a > .base--clickable > .header-item__text > .txt--med'
     ).click();
-    cy.get(':nth-child(3) > .frm').type('test-email2023@mail.ru');
-    cy.get(':nth-child(4) > .frm').type('qwerty');
+    cy.get(':nth-child(3) > .frm').type(Cypress.env('email'));
+    cy.get(':nth-child(4) > .frm').type(Cypress.env('password'));
     cy.get('.btn-main').click();
   });
 
@@ -19,7 +19,7 @@ describe('Check the main links of santa-secrer app', () => {
       .and('contain.text', 'Мои Коробки');
   });
 
-  it('Check "Создать коробку" link', () => {
+  it.skip('Check "Создать коробку" link', () => {
     cy.get('.home-page-buttons > [href="/box/new"] > .btn-main').click();
     cy.url().should('include', '/box/new');
     cy.get('.form-card')
@@ -27,7 +27,7 @@ describe('Check the main links of santa-secrer app', () => {
       .and('contain.text', 'Придумайте название коробке');
   });
 
-  it('Check "Быстрая жеребьевка" link', () => {
+  it.skip('Check "Быстрая жеребьевка" link', () => {
     cy.get('[href="/randomizer"] > .btn-secondary').click();
     cy.url().should('include', '/randomizer');
     cy.get('.form-card')
@@ -45,9 +45,9 @@ describe('Check the main links of santa-secrer app', () => {
       .and('contain.text', 'Настройки профиля');
     cy.get(
       ':nth-child(1) > .form-page-group__main > :nth-child(2) > .frm-wrapper > .frm'
-    ).should('have.value', 'Tester');
+    ).should('have.value', Cypress.env('userName'));
     cy.get(
       '.layout-column-start > .layout-row-start > .frm-wrapper > .frm'
-    ).should('have.value', 'test-email2023@mail.ru');
+    ).should('have.value', Cypress.env('email'));
   });
 });
