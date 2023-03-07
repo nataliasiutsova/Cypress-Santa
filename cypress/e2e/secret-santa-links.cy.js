@@ -24,7 +24,9 @@ describe('Check the main links of santa-secrer app', () => {
     cy.url().should('include', '/box/new');
     cy.get('.form-card')
       .should('be.visible')
-      .and('contain.text', 'Придумайте название коробке');
+      .and('contain.text', 'Придумайте название коробке')
+      .and('contain.text', 'Название коробки')
+      .and('contain.text', 'Идентификатор');
   });
 
   it('Check "Быстрая жеребьевка" link', () => {
@@ -33,6 +35,14 @@ describe('Check the main links of santa-secrer app', () => {
     cy.get('.form-card')
       .should('be.visible')
       .and('contain.text', 'Быстрая жеребьевка');
+    cy.get(':nth-child(2) > .frm-wrapper > .frm').should(
+      'have.value',
+      Cypress.env('email')
+    );
+    cy.get(':nth-child(1) > .frm-wrapper > .frm').should(
+      'have.value',
+      Cypress.env('userName')
+    );
   });
 
   it('Check "Profile" link', () => {
