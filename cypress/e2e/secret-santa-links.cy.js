@@ -1,12 +1,7 @@
 describe('Check the main links of santa-secrer app', () => {
   beforeEach('Login', () => {
     cy.visit('/');
-    cy.get(
-      '.layout-1__header-wrapper-fixed > .layout-1__header > .header > .header__items > a > .base--clickable > .header-item__text > .txt--med'
-    ).click();
-    cy.get(':nth-child(3) > .frm').type(Cypress.env('email'));
-    cy.get(':nth-child(4) > .frm').type(Cypress.env('password'));
-    cy.get('.btn-main').click();
+    cy.loginUI(Cypress.env('email'), Cypress.env('password'));
   });
 
   it('Check "Коробки" link', () => {
