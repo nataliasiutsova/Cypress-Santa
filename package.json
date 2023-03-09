@@ -7,11 +7,15 @@
     "cy:open:stage": "cypress open",
     "cy:open:prod": "npx cypress open --env userName=Santa,password=asdfgh,email=test-email2023@mail.ru --config baseUrl=https://santa-secret.ru/",
     "cy:dashboard:stage": "cypress run --record --key 3b4f35ff-ad5e-4d4b-acbe-1bfda2f8baf8",
-    "cy:dashboard:prod": "npx cypress run --env userName=Santa,password=asdfgh,email=test-email2023@mail.ru --config baseUrl=https://santa-secret.ru/ --record --key 3b4f35ff-ad5e-4d4b-acbe-1bfda2f8baf8"
-  },
-  "author": "Natalia Siutsova <tashaklimenkova@gmail.com>",
-  "license": "ISC",
-  "devDependencies": {
-    "cypress": "^12.7.0"
+    "cy:dashboard:prod": "npx cypress run --env userName=Santa,password=asdfgh,email=test-email2023@mail.ru --config baseUrl=https://santa-secret.ru/ --record --key 3b4f35ff-ad5e-4d4b-acbe-1bfda2f8baf8",
+    "cy:run:chrome": "cypress run --browser chrome --spec 'cypress/e2e/secret-santa-links.cy.js' ",
+    "cy:run:electron": "cypress run --browser electron --spec 'cypress/e2e/secret-santa.cy.js'",
+    "cy:run:all": "npm run cy:run:chrome && npm run cy:run:electron",
+    "cy:run:all:dashbord": "npm run cy:run:chrome -- --record --key 3b4f35ff-ad5e-4d4b-acbe-1bfda2f8baf8 && npm run cy:run:electron -- --record --key 3b4f35ff-ad5e-4d4b-acbe-1bfda2f8baf8",
+    "author": "Natalia Siutsova <tashaklimenkova@gmail.com>",
+    "license": "ISC",
+    "devDependencies": {
+      "cypress": "^12.7.0"
+    }
   }
 }
