@@ -1,0 +1,12 @@
+{
+  "emailField": ":nth-child(3) > .frm",
+  "passwordField": ":nth-child(4) > .frm",
+  "loginButton": ".btn-main",
+  "formError": ".form-auth__error > .hint",
+  "fieldEmailError": ":nth-child(3) > .frm-wrapper__top > .frm-wrapper__top__error",
+  "fieldPasswordError": ":nth-child(4) > .frm-wrapper__top > .frm-wrapper__top__error",
+  "header": ".layout-1__header-wrapper-fixed > .layout-1__header > .header",
+  "userIcon": ".layout-1__header-wrapper-fixed > .layout-1__header > .header > .header__items > .layout-row-start > [href='/account'] > .header-item",
+  "deleteField": ":nth-child(5) > .form-page-group__main > .layout-column-start > .frm-wrapper > .frm",
+  "deleteButton": ":nth-child(3) > .layout-column-start > .layout-row-end > .btn-service"
+}

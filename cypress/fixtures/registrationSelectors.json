@@ -1,0 +1,12 @@
+{
+  "regLink": ".form-auth__header__subtitle > a > .txt-secondary--med",
+  "nameField": ":nth-child(3) > .frm",
+  "emailField": ":nth-child(4) > .frm",
+  "regButton": ".btn-main",
+  "signInButton": ".btn-main",
+  "signInLink": ".hint > .txt-secondary > a > .base--clickable",
+  "message": ".picture-notice__title ",
+  "formError": ".form-auth__error > .hint",
+  "fieldEmailError": ".frm-wrapper__top__error",
+  "fieldNameError": ".frm-wrapper__top__error"
+}

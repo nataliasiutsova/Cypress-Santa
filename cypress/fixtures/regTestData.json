@@ -1,0 +1,14 @@
+{
+  "invalidEmail": [
+    "@mail.ru",
+    "test-email2024mail.ru",
+    "test-email2024@",
+    "test-email2024@mail",
+    "test-email2024@mailru"
+  ],
+  "invalidName": [
+    "   ",
+    "1",
+    "qwertyuiop[]asdfghjklzxcvbnmlkjhERYUIOGSZqw24567890sdrtgvbnhyujks"
+  ]
+}
