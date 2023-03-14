@@ -4,7 +4,7 @@ module.exports = defineConfig({
   projectId: 'bp6ou6',
   env: {
     userName: 'Tester',
-    userEmail: 'test-email2023@mail.ru',
+    userEmail: 'test-email2023new@mail.ru',
     userPassword: 'qwerty',
   },
   e2e: {

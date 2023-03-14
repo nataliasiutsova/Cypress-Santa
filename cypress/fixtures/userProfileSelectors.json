@@ -1,0 +1,7 @@
+{
+  "newPasswordField": ".layout-column-start > :nth-child(1) > .frm",
+  "confirmPasswordField": ":nth-child(4) > .form-page-group__main > .layout-column-start > :nth-child(2) > .frm",
+  "savePasswordButton": ".layout-row-end > .btn-service",
+  "quickNotification": ":nth-child(4) > .form-page-group__main > .quick-notification > .quick-notification__text-wrapper",
+  "logoutLink": ".base--clickable > .txt--med"
+}

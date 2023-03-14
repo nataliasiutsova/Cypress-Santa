@@ -1,7 +1,5 @@
 import { faker } from '@faker-js/faker';
-import { LoginPage } from '../pages/loginPage';
-import { UserProfilePage } from '../pages/userProfilePage';
-
+const userProfileSelectors = require('../fixtures/userProfileSelectors.json');
 const loginSelectors = require('../fixtures/loginSelectors.json');
 
 describe('Change user password', () => {
@@ -11,23 +9,18 @@ describe('Change user password', () => {
 
   const newPassword = faker.internet.password(6);
   const oldPassword = Cypress.env('userPassword');
-  let loginPage = new LoginPage();
-  let userProfilePage = new UserProfilePage();
 
   it('Change user password', () => {
     cy.contains('Вход и регистрация').click({ force: true });
-    loginPage.login(Cypress.env('userEmail'), Cypress.env('userPassword'));
+    cy.loginUI(Cypress.env('userEmail'), Cypress.env('userPassword'));
 
     cy.contains('Коробки').should('exist'),
       cy.contains(Cypress.env('userName')).should('exist');
 
-    cy.contains(Cypress.env('userName')).click({ force: true });
-    userProfilePage.changePassword(newPassword);
+    cy.changePassword(newPassword);
     cy.log(newPassword);
 
-    cy.get(
-      ':nth-child(4) > .form-page-group__main > .quick-notification > .quick-notification__text-wrapper'
-    )
+    cy.get(userProfileSelectors.quickNotification)
       .wait(500)
       .should('be.visible')
       .and('contain.text', 'Ваш пароль сохранен')
@@ -37,13 +30,13 @@ describe('Change user password', () => {
         'rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box'
       );
 
-    userProfilePage.logout();
+    cy.get(userProfileSelectors.logoutLink).click();
     cy.url().should('include', '/');
   });
 
   it('Login with old password', () => {
     cy.contains('Вход и регистрация').click({ force: true });
-    loginPage.login(Cypress.env('userEmail'), oldPassword);
+    cy.loginUI(Cypress.env('userEmail'), oldPassword);
 
     cy.get(loginSelectors.formError)
       .should('contain.text', 'Неверное имя пользователя или пароль')
@@ -52,12 +45,11 @@ describe('Change user password', () => {
 
   it('Login with new password', () => {
     cy.contains('Вход и регистрация').click({ force: true });
-    loginPage.login(Cypress.env('userEmail'), newPassword);
+    cy.loginUI(Cypress.env('userEmail'), newPassword);
 
     cy.contains('Коробки').should('exist'),
       cy.contains(Cypress.env('userName')).should('exist');
 
-    cy.contains(Cypress.env('userName')).click({ force: true });
-    userProfilePage.changePassword(oldPassword);
+    cy.changePassword(oldPassword);
   });
 });
