@@ -4,8 +4,8 @@ module.exports = defineConfig({
   projectId: 'bp6ou6',
   env: {
     userName: 'Tester',
-    userEmail: 'test-email2024@mail.ru',
-    userPassword: 'RS0933',
+    userEmail: 'test-email2023@mail.ru',
+    userPassword: 'qwerty',
   },
   e2e: {
     baseUrl: 'https://staging.lpitko.ru',
