@@ -7,11 +7,9 @@ describe('Registration', () => {
     cy.visit('/');
   });
 
-  it('Successful user registration', () => {
-    const userName = faker.name.firstName();
-    cy.log(userName);
-    cy.task('save', userName);
+  const userName = faker.name.firstName();
 
+  it('Successful user registration', () => {
     cy.regUI(userName, Cypress.env('userEmail'));
     cy.get(regSelectors.message).should('have.text', 'Письмо отправлено!');
     cy.get(regSelectors.signInButton).should('exist').click();
@@ -19,10 +17,8 @@ describe('Registration', () => {
   });
 
   it('Repeated registration', () => {
-    cy.task('load').then((userName) => {
-      const existUser = userName;
-      cy.regUI(existUser, Cypress.env('userEmail'));
-    });
+    const existUser = userName;
+    cy.regUI(existUser, Cypress.env('userEmail'));
     cy.get(regSelectors.formError)
       .should('be.visible')
       .and('contain.text', 'Такой пользователь уже зарегистрирован.')
@@ -57,9 +53,7 @@ describe('Registration', () => {
   it('Registration with blank user email field', () => {
     cy.contains('Вход и регистрация').click({ force: true });
     cy.get(regSelectors.regLink).click();
-    cy.task('load').then((userName) => {
-      cy.get(regSelectors.nameField).type(userName);
-    });
+    cy.get(regSelectors.nameField).type(userName);
     cy.get(regSelectors.regButton).click();
 
     cy.get(regSelectors.formError)
@@ -70,22 +64,20 @@ describe('Registration', () => {
 
   it('Registration with incorrect email format', () => {
     cy.wrap(regTestData.invalidEmail).each(($item) => {
-      cy.task('load').then((userName) => {
-        cy.contains('Вход и регистрация').click({ force: true });
-        cy.get(regSelectors.regLink).click();
-        cy.get(regSelectors.emailField).clear().type($item);
-        cy.get(regSelectors.nameField).clear().type(userName);
-      });
-
-      cy.get(regSelectors.fieldEmailError)
-        .should('be.visible')
-        .and('contain.text', 'Некорректный email');
-      cy.get(regSelectors.emailField).should(
-        'have.css',
-        'border',
-        '1px solid rgb(237, 64, 106)'
-      );
+      cy.contains('Вход и регистрация').click({ force: true });
+      cy.get(regSelectors.regLink).click();
+      cy.get(regSelectors.emailField).clear().type($item);
+      cy.get(regSelectors.nameField).clear().type(userName);
     });
+
+    cy.get(regSelectors.fieldEmailError)
+      .should('be.visible')
+      .and('contain.text', 'Некорректный email');
+    cy.get(regSelectors.emailField).should(
+      'have.css',
+      'border',
+      '1px solid rgb(237, 64, 106)'
+    );
   });
 
   it('User name field does not accept invalid format data', () => {

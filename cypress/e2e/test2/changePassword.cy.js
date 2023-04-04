@@ -1,8 +1,8 @@
 import { faker } from '@faker-js/faker';
-import { LoginPage } from '../pages/loginPage';
-import { UserProfilePage } from '../pages/userProfilePage';
+import { LoginPage } from '../../pages/loginPage';
+import { UserProfilePage } from '../../pages/userProfilePage';
 
-const loginSelectors = require('../fixtures/loginSelectors.json');
+const loginSelectors = require('../../fixtures/loginSelectors.json');
 
 describe('Change user password', () => {
   beforeEach(() => {

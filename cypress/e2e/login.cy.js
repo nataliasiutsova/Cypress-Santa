@@ -26,7 +26,7 @@ describe('Login', () => {
   });
 
   it('Login with wrong user email', () => {
-    cy.loginUI('test-email202@mail.ru', Cypress.env('userPassword'));
+    cy.loginUI('test-email2023@mail.ru', Cypress.env('userPassword'));
     cy.get(loginSelectors.formError)
       .should('be.visible')
       .and('contain.text', 'Неверное имя пользователя или пароль')

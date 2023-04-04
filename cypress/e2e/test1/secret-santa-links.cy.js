@@ -1,7 +1,7 @@
-describe('Check the main links of santa-secrer app', () => {
+describe('Check the main links of santa-secret app', () => {
   beforeEach('Login', () => {
     cy.visit('/');
-    cy.loginUI(Cypress.env('email'), Cypress.env('password'));
+    cy.loginUI(Cypress.env('userEmail'), Cypress.env('userPassword'));
   });
 
   it('Check "Коробки" link', () => {
@@ -32,7 +32,7 @@ describe('Check the main links of santa-secrer app', () => {
       .and('contain.text', 'Быстрая жеребьевка');
     cy.get(':nth-child(2) > .frm-wrapper > .frm').should(
       'have.value',
-      Cypress.env('email')
+      Cypress.env('userEmail')
     );
     cy.get(':nth-child(1) > .frm-wrapper > .frm').should(
       'have.value',
@@ -53,6 +53,6 @@ describe('Check the main links of santa-secrer app', () => {
     ).should('have.value', Cypress.env('userName'));
     cy.get(
       '.layout-column-start > .layout-row-start > .frm-wrapper > .frm'
-    ).should('have.value', Cypress.env('email'));
+    ).should('have.value', Cypress.env('userEmail'));
   });
 });

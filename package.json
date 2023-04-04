@@ -14,7 +14,10 @@
     "cy:run:all:dashbord": "npm run cy:run:chrome -- --record --key 3b4f35ff-ad5e-4d4b-acbe-1bfda2f8baf8 && npm run cy:run:electron -- --record --key 3b4f35ff-ad5e-4d4b-acbe-1bfda2f8baf8",
     "cy:run:reg": "npx cypress run --browser chrome --spec 'cypress/e2e/registration.cy.js'",
     "cy:run:login": "npx cypress run --browser chrome --spec 'cypress/e2e/login.cy.js'",
-    "cy:run:reg:login": "npm run cy:run:reg && npm run cy:run:login"
+    "cy:run:reg:login": "npm run cy:run:reg && npm run cy:run:login",
+    "cy:run:test1": "npx cypress run --browser chrome --spec 'cypress/e2e/test1/*.cy.js'",
+    "cy:run:test2": "npx cypress run --browser electron --spec 'cypress/e2e/test2/*.cy.js'",
+    "cy:test1:test2:dashbord": "npm run cy:run:test1 -- --record --key 3b4f35ff-ad5e-4d4b-acbe-1bfda2f8baf8 && npm run cy:run:test2 -- --record --key 3b4f35ff-ad5e-4d4b-acbe-1bfda2f8baf8"
   },
   "author": "Natalia Siutsova <tashaklimenkova@gmail.com>",
   "license": "ISC",
