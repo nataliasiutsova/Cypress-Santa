@@ -15,14 +15,19 @@
     "cy:run:reg": "npx cypress run --browser chrome --spec 'cypress/e2e/registration.cy.js'",
     "cy:run:login": "npx cypress run --browser chrome --spec 'cypress/e2e/login.cy.js'",
     "cy:run:reg:login": "npm run cy:run:reg && npm run cy:run:login",
-    "cy:run:test1": "npx cypress run --browser chrome --spec 'cypress/e2e/test1/*.cy.js'",
-    "cy:run:test2": "npx cypress run --browser electron --spec 'cypress/e2e/test2/*.cy.js'",
-    "cy:test1:test2:dashbord": "npm run cy:run:test1 -- --record --key 3b4f35ff-ad5e-4d4b-acbe-1bfda2f8baf8 && npm run cy:run:test2 -- --record --key 3b4f35ff-ad5e-4d4b-acbe-1bfda2f8baf8"
+    "cy:run:test1": "npx cypress run --browser chrome --spec 'cypress/e2e/test1/*.cy.js' --config-file cypress1.config.js",
+    "cy:run:test2": "npx cypress run --browser electron --spec 'cypress/e2e/test2/*.cy.js' --config-file cypress2.config.js",
+    "cy:test1:dashboard": "npm run cy:run:test1 -- --record --key 3b4f35ff-ad5e-4d4b-acbe-1bfda2f8baf8",
+    "cy:test2:dashboard": "npm run cy:run:test2 -- --record --key 3b4f35ff-ad5e-4d4b-acbe-1bfda2f8baf8",
+    "cy:test1:test2:dashboard": "npm run cy:test1:dashboard && npm run cy:test2:dashboard",
+    "cy:test1:test2:local:parallel": "npm run cy:run:test1 & npm run cy:run:test2",
+    "cy:test1:test2:parallel": "npm run cy:test1:dashboard -- --group test1 --ci-build-id 1 --parallel & npm run cy:test2:dashboard -- --group test2 --ci-build-id 1 --parallel"
   },
   "author": "Natalia Siutsova <tashaklimenkova@gmail.com>",
   "license": "ISC",
   "devDependencies": {
+    "@faker-js/faker": "^7.6.0",
     "cypress": "^12.7.0",
-    "@faker-js/faker": "^7.6.0"
+    "cypress-parallel": "^0.12.0"
   }
 }
