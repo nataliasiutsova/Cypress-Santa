@@ -4,6 +4,7 @@
   "description": "UI testing",
   "main": "index.js",
   "scripts": {
+    "cy:run": "cypress run",
     "cy:open:stage": "npx cypress open",
     "cy:open:prod": "npx cypress open --env userName=Santa,password=asdfgh,email=test-email2023@mail.ru --config baseUrl=https://santa-secret.ru/",
     "cy:dashboard:stage": "cypress run --record --key 3b4f35ff-ad5e-4d4b-acbe-1bfda2f8baf8",
@@ -21,7 +22,11 @@
     "cy:test2:dashboard": "npm run cy:run:test2 -- --record --key 3b4f35ff-ad5e-4d4b-acbe-1bfda2f8baf8",
     "cy:test1:test2:dashboard": "npm run cy:test1:dashboard && npm run cy:test2:dashboard",
     "cy:test1:test2:local:parallel": "npm run cy:run:test1 & npm run cy:run:test2",
-    "cy:test1:test2:parallel": "npm run cy:test1:dashboard -- --group test1 --ci-build-id 1 --parallel & npm run cy:test2:dashboard -- --group test2 --ci-build-id 1 --parallel"
+    "cy:test1:test2:parallel": "npm run cy:test1:dashboard -- --group test1 --ci-build-id 1 --parallel & npm run cy:test2:dashboard -- --group test2 --ci-build-id 1 --parallel",
+    "cy:test1:local:parallel": "cypress-parallel -s cy:run -t 2 -d cypress/e2e/test1/* -a '\"--config-file cypress1.config.js --browser chrome\"'",
+    "cy:test2:local:parallel": "cypress-parallel -s cy:run -t 2 -d cypress/e2e/test2/* -a '\"--config-file cypress2.config.js --browser electron\"'",
+    "cy:test1:parallel:dash": "cypress-parallel -s cy:run -t 2 -d cypress/e2e/test1/* -a '\"--config-file cypress1.config.js --browser chrome --record --key 3b4f35ff-ad5e-4d4b-acbe-1bfda2f8baf8\"'",
+    "cy:test2:parallel:dash": "cypress-parallel -s cy:run -t 2 -d cypress/e2e/test2/* -a '\"--config-file cypress2.config.js --browser electron --record --key 3b4f35ff-ad5e-4d4b-acbe-1bfda2f8baf8\"'"
   },
   "author": "Natalia Siutsova <tashaklimenkova@gmail.com>",
   "license": "ISC",
