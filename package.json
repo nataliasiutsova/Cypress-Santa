@@ -26,7 +26,10 @@
     "cy:test1:local:parallel": "cypress-parallel -s cy:run -t 2 -d cypress/e2e/test1/* -a '\"--config-file cypress1.config.js --browser chrome\"'",
     "cy:test2:local:parallel": "cypress-parallel -s cy:run -t 2 -d cypress/e2e/test2/* -a '\"--config-file cypress2.config.js --browser electron\"'",
     "cy:test1:parallel:dash": "cypress-parallel -s cy:run -t 2 -d cypress/e2e/test1/* -a '\"--config-file cypress1.config.js --browser chrome --record --key 3b4f35ff-ad5e-4d4b-acbe-1bfda2f8baf8\"'",
-    "cy:test2:parallel:dash": "cypress-parallel -s cy:run -t 2 -d cypress/e2e/test2/* -a '\"--config-file cypress2.config.js --browser electron --record --key 3b4f35ff-ad5e-4d4b-acbe-1bfda2f8baf8\"'"
+    "cy:test2:parallel:dash": "cypress-parallel -s cy:run -t 2 -d cypress/e2e/test2/* -a '\"--config-file cypress2.config.js --browser electron --record --key 3b4f35ff-ad5e-4d4b-acbe-1bfda2f8baf8\"'",
+    "cy:test2:chrome": "npx cypress run --browser chrome --spec 'cypress/e2e/test2/*.cy.js' --config-file cypress2.config.js",
+    "cy:test2:electron": "npx cypress run --browser electron --spec 'cypress/e2e/test2/*.cy.js' --config-file cypress2.config.js",
+    "cy:spec1:spec2:parallel": " npx cypress run --browser chrome --spec 'cypress/e2e/test1/*' --config-file cypress1.config.js --record --key 3b4f35ff-ad5e-4d4b-acbe-1bfda2f8baf8 --group chrome --ci-build-id ${BUILD_ID} --parallel"
   },
   "author": "Natalia Siutsova <tashaklimenkova@gmail.com>",
   "license": "ISC",

@@ -1,1 +1,3 @@
 node_modules/
+runner-results/
+multi-reporter-config.json
