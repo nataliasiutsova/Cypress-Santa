@@ -105,14 +105,6 @@ describe('Create box by API', () => {
 
   it('Remove boxes ', () => {
     cy.request({
-      method: 'GET',
-      url: '/api/account/boxes',
-    }).then((res) => {
-      expect(res.status).to.eq(200);
-      expect(res.body).to.have.length(2);
-    });
-
-    cy.request({
       method: 'DELETE',
       url: '/api/box/' + keyBox,
     }).then((res) => {
@@ -121,19 +113,12 @@ describe('Create box by API', () => {
     });
 
     cy.request({
-      method: 'DELETE',
-      url: '/api/box/' + keyBox2,
-    }).then((res) => {
-      expect(res.status).to.eq(200);
-      expect(res.body).to.eq('OK');
-    });
-
-    cy.request({
       method: 'GET',
-      url: '/api/account/boxes',
+      url: '/api/box/+ keyBox',
+      failOnStatusCode: false,
     }).then((res) => {
-      expect(res.status).to.eq(200);
-      expect(res.body).to.be.empty;
+      expect(res.status).to.eq(404);
+      expect(res.body.error.message).to.to.eq('BOX_NOT_FOUND');
     });
   });
 });

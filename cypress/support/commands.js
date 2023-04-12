@@ -18,14 +18,10 @@ Cypress.Commands.add('regUI', (userName, userEmail) => {
 });
 
 Cypress.Commands.add('loginByAPI', (userEmail, userPassword) => {
-  cy.session([userEmail, userPassword], () => {
-    cy.request({
-      method: 'POST',
-      url: '/api/login',
-      body: { email: userEmail, password: userPassword },
-    }).then(({ body }) => {
-      window.localStorage.setItem('authToken', body.token);
-    });
+  cy.request({
+    method: 'POST',
+    url: '/api/login',
+    body: { email: userEmail, password: userPassword },
   });
 });
 
@@ -152,7 +148,7 @@ Cypress.Commands.add('createBoxDefSet', (nameBox) => {
 });
 
 Cypress.Commands.add('createBoxUserSet', (nameBox) => {
-  const keyBox = faker.word.noun(6);
+  const keyBox2 = faker.word.verb(6);
   const picture = [
     'tree',
     'gift',
@@ -182,7 +178,7 @@ Cypress.Commands.add('createBoxUserSet', (nameBox) => {
     body: {
       email: null,
       name: nameBox,
-      key: keyBox,
+      key: keyBox2,
       picture: null,
       usePost: false,
       useCashLimit: null,
@@ -208,7 +204,7 @@ Cypress.Commands.add('createBoxUserSet', (nameBox) => {
     body: {
       email: null,
       name: nameBox,
-      key: keyBox,
+      key: keyBox2,
       picture: newpicture,
       usePost: false,
       useCashLimit: null,
@@ -234,7 +230,7 @@ Cypress.Commands.add('createBoxUserSet', (nameBox) => {
     body: {
       email: null,
       name: nameBox,
-      key: keyBox,
+      key: keyBox2,
       picture: newpicture,
       usePost: false,
       useCashLimit: true,
@@ -258,7 +254,7 @@ Cypress.Commands.add('createBoxUserSet', (nameBox) => {
     body: {
       email: null,
       name: nameBox,
-      key: keyBox,
+      key: keyBox2,
       picture: newpicture,
       usePost: true,
       useCashLimit: true,
