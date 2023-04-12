@@ -5,12 +5,12 @@ module.exports = defineConfig({
   viewportWidth: 2048,
   viewportHeight: 1152,
   env: {
-    userName: 'Tester',
-    userEmail: 'test-email2023new@mail.ru',
-    userPassword: 'qwerty',
+    userName: 'Santa',
+    userEmail: 'test-email2024+1@mail.ru',
+    userPassword: 'asdfgh',
   },
   e2e: {
-    baseUrl: 'https://staging.lpitko.ru',
+    baseUrl: 'https://santa-secret.ru',
     watchForFileChanges: false,
     setupNodeEvents(on, config) {},
   },

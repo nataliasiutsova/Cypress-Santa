@@ -7,11 +7,12 @@ describe('Create box by API', () => {
 
   const nameBox = faker.word.noun(6);
   const nameBox2 = faker.word.noun(6);
+  let keyBox;
+  let keyBox2;
 
   it('Create a box with default settings', () => {
     cy.createBoxDefSet(nameBox).then((res) => {
-      const keyBox = res.body.box.key;
-      cy.task('save1', keyBox);
+      keyBox = res.body.box.key;
       const pictureBox = res.body.box.picture;
 
       //GET-send request to view the created box
@@ -40,8 +41,7 @@ describe('Create box by API', () => {
 
   it('Create a box with user settings', () => {
     cy.createBoxUserSet(nameBox2).then((res) => {
-      const keyBox2 = res.body.box.key;
-      cy.task('save2', keyBox2);
+      keyBox2 = res.body.box.key;
       const pictureBox2 = res.body.box.picture;
       const cashLimit = res.body.box.cashLimit;
       const cashLimitCurrency = res.body.box.cashLimitCurrency;
@@ -74,33 +74,31 @@ describe('Create box by API', () => {
   });
 
   it('Change the box settings', () => {
-    cy.task('load2').then((keyBox2) => {
-      cy.changeBoxSet(keyBox2).then((res) => {
-        const newnameBox = res.body.box.name;
-        const newpicture = res.body.box.picture;
-        const cashLimit = res.body.box.cashLimit;
-        const cashLimitCurrency = res.body.box.cashLimitCurrency;
-        const useCashLimit = res.body.box.useCashLimit;
-        const useNames = res.body.box.useNames;
-        const isPhoneRequired = res.body.box.isPhoneRequired;
-        const usePost = res.body.box.usePost;
-        const useWish = res.body.box.useWish;
-        //GET-send request to view box changes
-        cy.request({
-          method: 'GET',
-          url: '/api/box/' + keyBox2,
-        }).then((res) => {
-          expect(res.status).to.eq(200);
-          expect(res.body.box.name).to.equal(newnameBox);
-          expect(res.body.box.picture).to.equal(newpicture);
-          expect(res.body.box.usePost).to.equal(usePost);
-          expect(res.body.box.useNames).to.equal(useNames);
-          expect(res.body.box.useWish).to.equal(useWish);
-          expect(res.body.box.isPhoneRequired).to.equal(isPhoneRequired);
-          expect(res.body.box.useCashLimit).to.equal(useCashLimit);
-          expect(res.body.box.cashLimit).to.equal(cashLimit);
-          expect(res.body.box.cashLimitCurrency).to.equal(cashLimitCurrency);
-        });
+    cy.changeBoxSet(keyBox2).then((res) => {
+      const newnameBox = res.body.box.name;
+      const newpicture = res.body.box.picture;
+      const cashLimit = res.body.box.cashLimit;
+      const cashLimitCurrency = res.body.box.cashLimitCurrency;
+      const useCashLimit = res.body.box.useCashLimit;
+      const useNames = res.body.box.useNames;
+      const isPhoneRequired = res.body.box.isPhoneRequired;
+      const usePost = res.body.box.usePost;
+      const useWish = res.body.box.useWish;
+      //GET-send request to view box changes
+      cy.request({
+        method: 'GET',
+        url: '/api/box/' + keyBox2,
+      }).then((res) => {
+        expect(res.status).to.eq(200);
+        expect(res.body.box.name).to.equal(newnameBox);
+        expect(res.body.box.picture).to.equal(newpicture);
+        expect(res.body.box.usePost).to.equal(usePost);
+        expect(res.body.box.useNames).to.equal(useNames);
+        expect(res.body.box.useWish).to.equal(useWish);
+        expect(res.body.box.isPhoneRequired).to.equal(isPhoneRequired);
+        expect(res.body.box.useCashLimit).to.equal(useCashLimit);
+        expect(res.body.box.cashLimit).to.equal(cashLimit);
+        expect(res.body.box.cashLimitCurrency).to.equal(cashLimitCurrency);
       });
     });
   });
@@ -114,24 +112,20 @@ describe('Create box by API', () => {
       expect(res.body).to.have.length(2);
     });
 
-    cy.task('load1').then((keyBox) => {
-      cy.request({
-        method: 'DELETE',
-        url: '/api/box/' + keyBox,
-      }).then((res) => {
-        expect(res.status).to.eq(200);
-        expect(res.body).to.eq('OK');
-      });
+    cy.request({
+      method: 'DELETE',
+      url: '/api/box/' + keyBox,
+    }).then((res) => {
+      expect(res.status).to.eq(200);
+      expect(res.body).to.eq('OK');
     });
 
-    cy.task('load2').then((keyBox2) => {
-      cy.request({
-        method: 'DELETE',
-        url: '/api/box/' + keyBox2,
-      }).then((res) => {
-        expect(res.status).to.eq(200);
-        expect(res.body).to.eq('OK');
-      });
+    cy.request({
+      method: 'DELETE',
+      url: '/api/box/' + keyBox2,
+    }).then((res) => {
+      expect(res.status).to.eq(200);
+      expect(res.body).to.eq('OK');
     });
 
     cy.request({

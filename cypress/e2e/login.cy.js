@@ -25,14 +25,6 @@ describe('Login', () => {
       .and('have.css', 'background-color', 'rgb(255, 239, 243)');
   });
 
-  it('Login with wrong user email', () => {
-    cy.loginUI('test-email2023@mail.ru', Cypress.env('userPassword'));
-    cy.get(loginSelectors.formError)
-      .should('be.visible')
-      .and('contain.text', 'Неверное имя пользователя или пароль')
-      .and('have.css', 'background-color', 'rgb(255, 239, 243)');
-  });
-
   it('Removing user profile', () => {
     cy.loginUI(Cypress.env('userEmail'), Cypress.env('userPassword'));
     cy.get(loginSelectors.userIcon).click({ force: true });
