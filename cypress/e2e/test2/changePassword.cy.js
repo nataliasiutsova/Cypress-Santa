@@ -28,7 +28,7 @@ describe('Change user password', () => {
     cy.get(
       ':nth-child(4) > .form-page-group__main > .quick-notification > .quick-notification__text-wrapper'
     )
-      .wait(500)
+      .wait(1000)
       .should('be.visible')
       .and('contain.text', 'Ваш пароль сохранен')
       .and(
