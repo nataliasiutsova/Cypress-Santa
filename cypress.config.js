@@ -6,7 +6,7 @@ module.exports = defineConfig({
   env: {
     userName: 'test1',
     userEmail: 'test-email2024+1@mail.ru',
-    userPassword: ' LR2832',
+    userPassword: 'LR2832',
   },
   e2e: {
     baseUrl: 'https://staging.lpitko.ru',
