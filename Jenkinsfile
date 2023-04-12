@@ -4,7 +4,7 @@ pipeline{
 
   parameters{
 
-    choice(name:'SCRIPT',choices:['cy:run:reg:login','cy:run:api','cy:run:test1','cy:run:test2'], description:"Choice script that you want to execute")
+    choice(name:'SCRIPT',choices:['cy:run:reg:login','cy:api','cy:run:test1','cy:run:test2'], description:"Choice script that you want to execute")
 
   }
 
