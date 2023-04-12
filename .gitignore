@@ -1,3 +1,6 @@
 node_modules/
 runner-results/
+videos/
+screenshots/
 multi-reporter-config.json
+parallel-weights.json
