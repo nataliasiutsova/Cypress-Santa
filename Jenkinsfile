@@ -35,7 +35,7 @@ pipeline{
            publishHTML ([allowMissing: false,
            alwaysLinkToLastBuild: false,
            keepAll: true,
-           reportDir: 'C:\Users\0\Documents\Vscode\Cypress-Santa\cypress\reports\html',
+           reportDir: 'cypress\reports\html',
            reportFiles: 'index.html',
            reportName: 'HTML Report',
            ])
