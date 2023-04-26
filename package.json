@@ -23,14 +23,16 @@
     "cy:test2:parallel:dash": "cypress-parallel -s cy:run -t 2 -d cypress/e2e/test2/* -a '\"--config-file cypressProd.config.js --browser electron --record --key 3b4f35ff-ad5e-4d4b-acbe-1bfda2f8baf8\"'",
     "cy:test2:chrome": "npx cypress run --browser chrome --spec 'cypress/e2e/test2/*.cy.js' --config-file cypressProd.config.js",
     "cy:test2:electron": "npx cypress run --browser electron --spec 'cypress/e2e/test2/*.cy.js' --config-file cypressProd.config.js",
-    "cy:spec1:spec2:parallel": " npx cypress run --browser chrome --spec 'cypress/e2e/test1/*' --config-file cypressStage.config.js --record --key 3b4f35ff-ad5e-4d4b-acbe-1bfda2f8baf8 --group chrome --parallel --ci-build-id %BUILD_ID%"
+    "cy:spec1:spec2:parallel": " npx cypress run --browser chrome --spec 'cypress/e2e/test1/*' --config-file cypressStage.config.js --record --key 3b4f35ff-ad5e-4d4b-acbe-1bfda2f8baf8 --group chrome --parallel --ci-build-id %BUILD_ID%",
+    "mocha:report": "npx cypress run --reporter mocha-junit-reporter --spec 'cypress/e2e/login.cy.js'",
+    "jira:uploud": "curl.exe -H \"Content-Type: text/xml\" -X POST https://xray.cloud.getxray.app/api/v2/import/execution/junit?projectKey=SC -H \"Authorization: Bearer ${{secrets.BEARER}}\" --data @test-results.xml"
   },
   "author": "Natalia Siutsova <tashaklimenkova@gmail.com>",
   "license": "ISC",
   "devDependencies": {
     "@faker-js/faker": "^7.6.0",
     "cypress": "^12.7.0",
-    "cypress-mochawesome-reporter": "^3.3.0",
-    "cypress-parallel": "^0.12.0"
+    "cypress-parallel": "^0.12.0",
+    "mocha-junit-reporter": "^2.2.0"
   }
 }
