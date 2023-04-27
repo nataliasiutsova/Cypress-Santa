@@ -24,8 +24,7 @@
     "cy:test2:chrome": "npx cypress run --browser chrome --spec 'cypress/e2e/test2/*.cy.js' --config-file cypressProd.config.js",
     "cy:test2:electron": "npx cypress run --browser electron --spec 'cypress/e2e/test2/*.cy.js' --config-file cypressProd.config.js",
     "cy:spec1:spec2:parallel": " npx cypress run --browser chrome --spec 'cypress/e2e/test1/*' --config-file cypressStage.config.js --record --key 3b4f35ff-ad5e-4d4b-acbe-1bfda2f8baf8 --group chrome --parallel --ci-build-id %BUILD_ID%",
-    "mocha:report": "npx cypress run --reporter mocha-junit-reporter --spec 'cypress/e2e/login.cy.js'",
-    "jira:uploud": "curl.exe -H \"Content-Type: text/xml\" -X POST https://xray.cloud.getxray.app/api/v2/import/execution/junit?projectKey=SC -H \"Authorization: Bearer ${{secrets.BEARER}}\" --data @test-results.xml"
+    "mocha:report": "npx cypress run --reporter mocha-junit-reporter --spec 'cypress/e2e/login.cy.js'"
   },
   "author": "Natalia Siutsova <tashaklimenkova@gmail.com>",
   "license": "ISC",
